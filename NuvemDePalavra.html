@@ -107,7 +107,7 @@ a.active { text-decoration: none; color: #000; font-weight: bold; cursor: text; 
 
 
 function myFunction(){
-    window.postMessage({ action: "heightChange", content: "10000"}, '*')
+    wwindow.parent.postMessage({ action: 'heightChange', content: '600%'}, '*')
     setInterval(function(){
         
          document.getElementById("go").click()
