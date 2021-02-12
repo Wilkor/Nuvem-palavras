@@ -225,6 +225,13 @@ h1 {
 <script type="text/javascript">
 
 
+function guid4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 function uuidv4() {
   return (Math.random() + 1).toString(36).substring(7)
   
@@ -232,14 +239,6 @@ function uuidv4() {
 
 
 function myFunction(){
-
-window.addEventListener("message", receiveMessage, false);
-
-function receiveMessage(event)
-{
-  console.log(JSON.stringify(event))
-}
-
 
 var eventCaller = window.name;
 var trackingProperties = {
@@ -273,12 +272,18 @@ window.parent.postMessage(mensagem ,'*')
 
  function getTickets(){
 
-   
+  var queryString = window.location.search;
+
+  var keyBot = decodeURIComponent(queryString.split("key=")[1])
+
+
+  alert(keyBot)
+
 
     var urlApi =  "https://http.msging.net/commands";
 
     payload = {
-                "id": "123123",
+                "id": guid4(),
                 "to": "postmaster@desk.msging.net",
                 "method": "get",
                 "uri": "/tickets/"
@@ -292,7 +297,7 @@ window.parent.postMessage(mensagem ,'*')
            async: false,
            contentType: "application/json; charset=utf-8",
            beforeSend: function(xhr) {
-               xhr.setRequestHeader('Authorization', 'Key c2FmcmFwcm9kdXJhdmVpY3Vsb3M6a2kxRWk4YXdqVzRNRDBNNWZpVnE=');
+               xhr.setRequestHeader('Authorization', keyBot);
            },
            error: function (jqXHR, textStatus, errorThrown) {
                console.log(textStatus);
@@ -309,7 +314,7 @@ window.parent.postMessage(mensagem ,'*')
                 })
 
 
-               showClouds(ids)
+               showClouds(ids,keyBot)
                
                
            },
@@ -319,7 +324,7 @@ window.parent.postMessage(mensagem ,'*')
   }
 
 
-  function showClouds(ids){
+  function showClouds(ids,keyBot){
 
     const randomElement = ids[Math.floor(Math.random() * ids.length)];
 
@@ -327,7 +332,7 @@ window.parent.postMessage(mensagem ,'*')
     var urlApi =  "https://http.msging.net/commands";
 
     payload = {
-                "id": "123123",
+                "id": guid4(),
                 "to": "postmaster@desk.msging.net",
                 "method": "get",
                 "uri": "/tickets/"+randomElement+"/messages"
@@ -341,7 +346,7 @@ window.parent.postMessage(mensagem ,'*')
            async: false,
            contentType: "application/json; charset=utf-8",
            beforeSend: function(xhr) {
-               xhr.setRequestHeader('Authorization', 'Key c2FmcmFwcm9kdXJhdmVpY3Vsb3M6a2kxRWk4YXdqVzRNRDBNNWZpVnE=');
+               xhr.setRequestHeader('Authorization', keyBot);
            },
            error: function (jqXHR, textStatus, errorThrown) {
                console.log(textStatus);
