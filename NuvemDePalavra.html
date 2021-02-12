@@ -115,9 +115,9 @@ var trackingProperties = {
     }
  var mensagem = {
       message: {
-        ...payload,
-        action: `${this.eventPrefix}${payload.action}`,
-        caller: this.eventCaller
+        payload,
+        action: `blipEvent:heightChange`,
+        caller: eventCaller
       },
       trackingProperties
     }
