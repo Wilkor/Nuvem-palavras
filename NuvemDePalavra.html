@@ -116,6 +116,14 @@ function uuidv4() {
 
 function myFunction(){
 
+window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event)
+{
+  console.log(JSON.stringify(event))
+}
+
+
 var eventCaller = window.name;
 var payload = { action: "heightChange", content: "10000"};
 var trackingProperties = {
