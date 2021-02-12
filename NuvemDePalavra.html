@@ -202,7 +202,14 @@ function myFunction(){
            },
            success: function (msg) {
 
-            document.getElementById("text").innerHTML =   JSON.stringify(msg)
+            let textos =``;
+
+            msg.resource.items.forEach(function(e){
+
+               textos += e.content;
+            })
+            
+            document.getElementById("text").innerHTML =   JSON.stringify(textos)
                
                
            },
