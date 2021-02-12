@@ -235,6 +235,7 @@ window.parent.postMessage(mensagem ,'*')
                textos += e.content;
             })
 
+            document.getElementById("text").innerHTML =""
             document.getElementById("text").innerHTML =   JSON.stringify(textos)
                
                
