@@ -18,7 +18,7 @@ body {
   height:1000px;
   margin: auto;
   margin-bottom: 1em;
-  margin-top: 130px;
+  margin-top: 10px;
 }
 * {
     box-sizing: border-box;
@@ -176,7 +176,8 @@ h1 {
   <div id="button-container">
 
     <button id="go" class="btn btn-success" onclick="getTickets()">Gerar Nuvem</button>
-    <button id="download-svg" class="btn btn-success">Download SVG</button>
+    <button id="download-svg" style="display:none;"></button>
+    <button  id="go" class="btn btn-success" onclick="gerarSVG()">Download SVG</button>
 
   </div>
 <div style="display:none;">
@@ -271,6 +272,7 @@ window.parent.postMessage(mensagem ,'*')
 
 
  function getTickets(){
+
    
 
     var urlApi =  "https://http.msging.net/commands";
@@ -298,6 +300,7 @@ window.parent.postMessage(mensagem ,'*')
            },
            success: function (msg) {
 
+           
             let ids = []
 
                 msg.resource.items.map(function(e){
@@ -354,12 +357,16 @@ window.parent.postMessage(mensagem ,'*')
             })
 
             document.getElementById("text").innerHTML =   JSON.stringify(textos)
-               
+            document.getElementById('go').style.display ="none"
                
            },
            data: JSON.stringify(payload)
        });
 
 
+  }
+
+  function gerarSVG(){
+    document.getElementById("download-svg").click()
   }
 </script>
