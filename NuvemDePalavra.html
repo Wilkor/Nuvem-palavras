@@ -125,7 +125,7 @@ function receiveMessage(event)
 
 
 var eventCaller = window.name;
-var payload = { action: "heightChange", content: "10000px"};
+var payload = { action: "heightChange", content: "10000px", caller:'blip-ai',fireAndForget:true};
 var trackingProperties = {
       id: uuidv4()
     }
