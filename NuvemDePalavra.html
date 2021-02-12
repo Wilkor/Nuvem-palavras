@@ -106,12 +106,20 @@ a.active { text-decoration: none; color: #000; font-weight: bold; cursor: text; 
 <script type="text/javascript">
 
 
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+
 function myFunction(){
 
 var eventCaller = window.name;
 var payload = { action: "heightChange", content: "10000"};
 var trackingProperties = {
-      id: "123124-2134-1134596-1213"
+      id: uuidv4()
     }
  var mensagem = {
       message: {
