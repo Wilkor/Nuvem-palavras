@@ -123,14 +123,13 @@ function receiveMessage(event)
 
 
 var eventCaller = window.name;
-var payload = { action: "heightChange", content: 1040, caller:'blip-ai',fireAndForget:true};
 var trackingProperties = {
       id: uuidv4()
     }
  var mensagem = {
       message: {
-        payload,
         action: `blipEvent:heightChange`,
+        content:815,
         caller: eventCaller
       },
       trackingProperties
@@ -138,7 +137,7 @@ var trackingProperties = {
 
 console.log(mensagem)
   
-window.postMessage(mensagem ,'*')
+window.parent.postMessage(mensagem ,'*')
 
 
     
