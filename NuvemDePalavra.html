@@ -107,7 +107,8 @@ a.active { text-decoration: none; color: #000; font-weight: bold; cursor: text; 
 
 
 function myFunction(){
-    this.window.parent.postMessage({ action: 'heightChange', content: '600%'}, '*')
+    var teste = window.parent
+      teste.postMessage({ action: 'heightChange', content: '600%'}, '*')
     setInterval(function(){
         
          document.getElementById("go").click()
