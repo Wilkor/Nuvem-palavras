@@ -107,8 +107,26 @@ a.active { text-decoration: none; color: #000; font-weight: bold; cursor: text; 
 
 
 function myFunction(){
-    var teste = window.parent
-      teste.postMessage({ action: 'heightChange', content: '600%'}, '*')
+
+var eventCaller = window.name;
+var payload = { action: "heightChange", content: "10000"};
+var trackingProperties = {
+      id: "123124-2134-1134596-1213"
+    }
+ var mensagem = {
+      message: {
+        ...payload,
+        action: `${this.eventPrefix}${payload.action}`,
+        caller: this.eventCaller
+      },
+      trackingProperties
+    }
+
+  
+window.parent.postMessage(mensagem ,'*')
+
+
+    
     setInterval(function(){
         
          document.getElementById("go").click()
