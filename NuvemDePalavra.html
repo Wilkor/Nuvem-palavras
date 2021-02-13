@@ -6,17 +6,22 @@
 integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
 <link href="./nuvem-de-palavras.css" rel="stylesheet"> 
+</head>
 
-  </head>
 <title>Nuvem de Palavras</title>    
 
-<body  onload="myFunction()">
+<body  onload="start()">
 
       <div class="pv2 header"><h1 class="bp-fs-3 bp-c-city">Nuvem de Palavras</h1></div>
       <div class="bp-divider-h"></div>
       
       <div class="bp-card bp-card--left-arrow">
-      <div id="vis"></div>
+      <div id="vis">
+
+        <textarea id="text" style="display:none;">
+        </textarea>
+
+      </div>
 
       <form id="form">
 
@@ -26,8 +31,6 @@ integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolfl
         <div id="presets"></div>
         <div id="custom-area">
 
-              <textarea id="text" style="display:none;">
-            </textarea>
             
           </div>
         </div>
@@ -37,9 +40,9 @@ integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolfl
 
         <div id="button-container">
 
-          <button id="go" class="btn btn-success" onclick="getTickets()">Gerar Nuvem</button>
+          <button id="go" class="btn btn-success" onclick="startServices()">Gerar Nuvem</button>
           <button id="download-svg" style="display:none;"></button>
-          <button  id="go" class="btn btn-success" onclick="gerarSVG()">Exportar</button>
+          <button  id="go" class="btn btn-success" onclick="downloadSVG()">Exportar</button>
 
         </div>
         <div style="display:none;">
@@ -73,10 +76,10 @@ integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolfl
 </div>
 
 </body>
-
-<script src="./nuvem-de-palavras.js"></script>
 <script src="https://www.jasondavies.com/d3.min.js"></script>
 <script src="https://www.jasondavies.com/wordcloud/cloud.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-  
+<script src="./services.js"></script>
+<script src="./helpers.js"></script>
+<script src="./nuvem-de-palavras.js"></script>
 
