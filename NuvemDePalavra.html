@@ -2,372 +2,78 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
- <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">   
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+<link href="./nuvem-de-palavras.css" rel="stylesheet">  
   </head>
-<title>Word Cloud Generator</title>
-<style>
-    
-#main-div {
-    height:1000px;
-}
-body {
-
-  font-family: "Helvetica Neue", sans-serif;
-  width: 80%;
-  height:600px;
-  margin: auto;
-  margin-bottom: 1em;
-  margin-top: 10px;
-}
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Nunito Sans","Helvetica",sans-serif;
-}
-#presets a { border-left: solid #666 1px; padding: 0 10px; }
-#presets a.first { border-left: none; }
-#keyword { width: 300px; }
-#fetcher { width: 500px; }
-#keyword, #go { font-size: 1.5em; }
-#text { width: 100%; height: 100px; }
-p.copy { font-size: small; }
-#form { font-size: small; position: relative; }
-hr { border: none; border-bottom: solid #ccc 1px; }
-a.active { text-decoration: none; color: #000; font-weight: bold; cursor: text; }
-#angles line, #angles path, #angles circle { stroke: #666; }
-#angles text { fill: #333; }
-#angles path.drag { fill: #666; cursor: move; }
-#angles { text-align: center; margin: 0 auto; width: 350px; }
-#angles input, #max { width: 42px; }
-
-.pv2 {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-}
-.border-box, a, article, aside, blockquote, body, code, dd, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, input[type=email], input[type=number], input[type=password], input[type=tel], input[type=text], input[type=url], legend, li, main, nav, ol, p, pre, section, table, td, textarea, th, tr, ul {
-    box-sizing: border-box;
-}
-.pv2 {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-}
-
-.bp-fs-3 {
-    font-size: 1.5rem;
-}
-
-.bp-c-city {
-    color: #52636c;
-}
-.bp-fs-3 {
-    font-size: 1.5rem;
-}
-.bp-c-city {
-    color: #52636c;
-}
-.bp-divider-h {
-    background-color: #c9dfe4;
-    height: 1px;
-    width: 100%;
-}
-h1 {
-    font-size: 2em;
-    margin: .67em 0;
-}
-
-.bp-card {
-    box-shadow: 0 4px 29px 6px rgb(181 205 211 / 29%);
-    -o-box-shadow: 0 4px 29px 6px rgba(181,205,211,.29);
-    -webkit-box-shadow: 0 4px 29px 6px rgb(181 205 211 / 29%);
-    -moz-box-shadow: 0 4px 29px 6px rgba(181,205,211,.29);
-    padding: 2.5rem 3.75rem;
-    position: relative;
-    background-color: #fff;
-    margin-top: .9375rem;
-}
-.bp-card {
-    box-shadow: 0 4px 29px 6px rgb(181 205 211 / 29%);
-    -o-box-shadow: 0 4px 29px 6px rgba(181,205,211,.29);
-    -webkit-box-shadow: 0 4px 29px 6px rgb(181 205 211 / 29%);
-    -moz-box-shadow: 0 4px 29px 6px rgba(181,205,211,.29);
-    padding: 2.5rem 3.75rem;
-    position: relative;
-    background-color: #fff;
-    margin-top: .9375rem;
-}
-.btn-success {
-    border-color: #4dcb7b!important;
-}
-
-.badge-success, .btn-success {
-    background-color: #4dcb7b!important;
-}
-[type=button], [type=reset], [type=submit], button {
-    -webkit-appearance: button;
-}
-.btn-success {
-    color: #fff;
-    background-color: #28a745;
-    border-color: #28a745;
-}
-#vis {
-
- margin-left:11%;
-}
-
-.bp-card.bp-card--left-arrow:after, .bp-card.bp-card--right-arrow:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: 0;
-    box-sizing: border-box;
-    border-color: #fff #fff transparent transparent;
-    border-style: solid;
-    border-width: .46875rem;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: rotate(
--45deg
-);
-    transform: rotate(
--45deg
-);
-    box-shadow: 3px -3px 3px 0 rgb(181 205 211 / 3%);
-}
-
-.bp-card.bp-card--left-arrow:after {
-    margin-left: -.46875rem;
-    left: 2.5rem;
-}
-#button-container {
-  display: flex;
-  justify-content: space-between;
-
-}
-</style>
+<title>Nuvem de Palavras</title>    
 
 <body  onload="myFunction()">
-  <div class="pv2 header"><h1 class="bp-fs-3 bp-c-city">Nuvem de Palavras</h1></div>
-  <div class="bp-divider-h"></div>
-  
-  <div class="bp-card bp-card--left-arrow">
-  <div id="vis"></div>
 
-<form id="form">
-
-<p style="position: absolute; right: 0; top: 0" id="status"></p>
-
-<div style="text-align: center">
-  <div id="presets"></div>
-  <div id="custom-area">
-  
-       <textarea id="text" style="display:none;">
-      </textarea>
+      <div class="pv2 header"><h1 class="bp-fs-3 bp-c-city">Nuvem de Palavras</h1></div>
+      <div class="bp-divider-h"></div>
       
-    </div>
-  </div>
+      <div class="bp-card bp-card--left-arrow">
+      <div id="vis"></div>
+
+      <form id="form">
+
+        <p style="position: absolute; right: 0; top: 0" id="status"></p>
+
+        <div style="text-align: center">
+        <div id="presets"></div>
+        <div id="custom-area">
+
+              <textarea id="text" style="display:none;">
+            </textarea>
+            
+          </div>
+        </div>
 
 
-  <div class="bp-divider-h"></div><br>
+        <div class="bp-divider-h"></div><br>
 
-  <div id="button-container">
+        <div id="button-container">
 
-    <button id="go" class="btn btn-success" onclick="getTickets()">Gerar Nuvem</button>
-    <button id="download-svg" style="display:none;"></button>
-    <button  id="go" class="btn btn-success" onclick="gerarSVG()">Exportar</button>
+          <button id="go" class="btn btn-success" onclick="getTickets()">Gerar Nuvem</button>
+          <button id="download-svg" style="display:none;"></button>
+          <button  id="go" class="btn btn-success" onclick="gerarSVG()">Exportar</button>
 
-  </div>
-<div style="display:none;">
+        </div>
+        <div style="display:none;">
         <br>
+        <div style="float: right; text-align: right">
+          <p><label for="max">Number of words:</label> <input type="number" value="250" min="1" id="max">
+          <p><label for="per-line"><input type="checkbox" id="per-line"> One word per line</label>
+          <!--<p><label for="colours">Colours:</label> <a href="#" id="random-palette">get random palette</a>-->
+          <p><label>Download:</label>
+            <button id="download-svg">SVG</button>
+        </div>
+        <div style="float: left">
+          <p><label>Spiral:</label>
+            <label for="archimedean"><input type="radio" name="spiral" id="archimedean" value="archimedean" checked="checked"> Archimedean</label>
+            <label for="rectangular"><input type="radio" name="spiral" id="rectangular" value="rectangular"> Rectangular</label>
+          <p><label for="scale">Scale:</label>
+            <label for="scale-log"><input type="radio" name="scale" id="scale-log" value="log" checked="checked"> log n</label>
+            <label for="scale-sqrt"><input type="radio" name="scale" id="scale-sqrt" value="sqrt"> √n</label>
+            <label for="scale-linear"><input type="radio" name="scale" id="scale-linear" value="linear"> n</label>
+          <p><label for="font">Font:</label> <input type="text" id="font" value="Impact">
+        </div>
+        <div id="angles">
+          <p><input type="number" id="angle-count" value="5" min="1"> <label for="angle-count">orientations</label>
+            <label for="angle-from">from</label> <input type="number" id="angle-from" value="-60" min="-90" max="90"> °
+            <label for="angle-to">to</label> <input type="number" id="angle-to" value="60" min="-90" max="90"> °
+        </div>
+        <div class="bp-divider-h"></div>
+      </div>
 
-     <div style="float: right; text-align: right">
-       <p><label for="max">Number of words:</label> <input type="number" value="250" min="1" id="max">
-       <p><label for="per-line"><input type="checkbox" id="per-line"> One word per line</label>
-       <!--<p><label for="colours">Colours:</label> <a href="#" id="random-palette">get random palette</a>-->
-       <p><label>Download:</label>
-         <button id="download-svg">SVG</button>
-     </div>
-     
-     <div style="float: left">
-       <p><label>Spiral:</label>
-         <label for="archimedean"><input type="radio" name="spiral" id="archimedean" value="archimedean" checked="checked"> Archimedean</label>
-         <label for="rectangular"><input type="radio" name="spiral" id="rectangular" value="rectangular"> Rectangular</label>
-       <p><label for="scale">Scale:</label>
-         <label for="scale-log"><input type="radio" name="scale" id="scale-log" value="log" checked="checked"> log n</label>
-         <label for="scale-sqrt"><input type="radio" name="scale" id="scale-sqrt" value="sqrt"> √n</label>
-         <label for="scale-linear"><input type="radio" name="scale" id="scale-linear" value="linear"> n</label>
-       <p><label for="font">Font:</label> <input type="text" id="font" value="Impact">
-     </div>
-     
-     <div id="angles">
-       <p><input type="number" id="angle-count" value="5" min="1"> <label for="angle-count">orientations</label>
-         <label for="angle-from">from</label> <input type="number" id="angle-from" value="-60" min="-90" max="90"> °
-         <label for="angle-to">to</label> <input type="number" id="angle-to" value="60" min="-90" max="90"> °
-     </div>
-     <div class="bp-divider-h"></div>
- </div>
-
-</form>
+      </form>
 </div>
 
 </body>
-
-<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px;margin-left:116px" data-ad-client="ca-pub-2911491153890039" data-ad-slot="2029654015"></ins>
-
 <script src="https://www.jasondavies.com/d3.min.js"></script>
 <script src="https://www.jasondavies.com/wordcloud/cloud.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="./nuvem-de-palavras.js"></script>
 
-
-<script type="text/javascript">
-
-
-function guid4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
-function uuidv4() {
-  return (Math.random() + 1).toString(36).substring(7)
-  
-}
-
-
-function myFunction(){
-
-var eventCaller = window.name;
-var trackingProperties = {
-      id: uuidv4()
-    }
- var mensagem = {
-      message: {
-        action: `blipEvent:heightChange`,
-        content:815,
-        caller: eventCaller
-      },
-      trackingProperties
-    }
-
-console.log(mensagem)
-  
-window.parent.postMessage(mensagem ,'*')
-
-
-    
-    setInterval(function(){
-        
-         document.getElementById("go").click()
-        
-    },60000)
-
-   
-}
-
-
-
- function getTickets(){
-
-  var queryString = window.location.search;
-
-  var keyBot = decodeURIComponent(queryString.split("key=")[1]);
-
-    var urlApi =  "https://http.msging.net/commands";
-
-    payload = {
-                "id": guid4(),
-                "to": "postmaster@desk.msging.net",
-                "method": "get",
-                "uri": "/tickets/"
-                }
-
-       $.ajax({
-           type: "POST",
-           dataType: 'json',
-           url: urlApi,
-           crossDomain: true,
-           async: false,
-           contentType: "application/json; charset=utf-8",
-           beforeSend: function(xhr) {
-               xhr.setRequestHeader('Authorization', keyBot);
-           },
-           error: function (jqXHR, textStatus, errorThrown) {
-               console.log(textStatus);
-               alert('Falha na consulta de valores específicos, erro:' + textStatus);
-           },
-           success: function (msg) {
-
-           
-            let ids = []
-
-                msg.resource.items.map(function(e){
-                       
-                      ids.push(e.id)
-                })
-
-
-               showClouds(ids,keyBot)
-               
-               
-           },
-           data: JSON.stringify(payload)
-       });
-
-  }
-
-
-  function showClouds(ids,keyBot){
-
-    const randomElement = ids[Math.floor(Math.random() * ids.length)];
-
-    
-    var urlApi =  "https://http.msging.net/commands";
-
-    payload = {
-                "id": guid4(),
-                "to": "postmaster@desk.msging.net",
-                "method": "get",
-                "uri": "/tickets/"+randomElement+"/messages"
-                }
-
-       $.ajax({
-           type: "POST",
-           dataType: 'json',
-           url: urlApi,
-           crossDomain: true,
-           async: false,
-           contentType: "application/json; charset=utf-8",
-           beforeSend: function(xhr) {
-               xhr.setRequestHeader('Authorization', keyBot);
-           },
-           error: function (jqXHR, textStatus, errorThrown) {
-               console.log(textStatus);
-               alert('Falha na consulta de valores específicos, erro:' + textStatus);
-           },
-           success: function (msg) {
-
-            let textos =``;
-
-            msg.resource.items.forEach(function(e){
-
-               textos += e.content;
-            })
-
-            document.getElementById("text").innerHTML =   JSON.stringify(textos)
-            document.getElementById('go').style.display ="none"
-               
-           },
-           data: JSON.stringify(payload)
-       });
-
-
-  }
-
-  function gerarSVG(){
-    document.getElementById("download-svg").click()
-  }
-</script>
