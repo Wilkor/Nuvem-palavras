@@ -41,3 +41,16 @@ Então a tela abaixo será carregada ...
 Depois de clicar em "Gerar Nuvem", a nuvem sera gerada automaticamente a cada um minuto.
 
 ![alt text](https://github.com/Wilkor/Nuvem-palavras/blob/main/img/tela-7-nuvem-de-palavras-resultado.PNG)
+
+
+### Informações adicionais
+
+Esse plugin foi construido de forma bem simples, mas porque era o meu objetivo, fazer algo simples sem muito esforço com um resultado massa. Porém,  se você quiser contruir algo mais rebuscado/sofisticado, é possivel, o BLiP esta preparado para isso. vou deixar aqui dois repositórios que eu precisei entender para construir o "Nuvem de Palavas" apenas com html e JavaScript.
+
+### blip-plugin-sample
+ [blip-plugin-sample.md](https://github.com/takenet/blip-plugin-sample)
+### iframe-message-proxy
+ [iframe-message-proxy.md](https://github.com/takenet/iframe-message-proxy)
+
+
+
