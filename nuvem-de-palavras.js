@@ -2,6 +2,7 @@
 
 function start(){
 
+  document.getElementById('atendimento').checked = true
 const message = createPostMessage()
 
 window.parent.postMessage(message ,'*')
@@ -22,6 +23,28 @@ function downloadSVG(){
 
 function startServices(){
 
-  getTickets();
+
+  if(document.getElementById('atendimento').checked) {
+   
+    getTickets();
+
+  }else if(document.getElementById('tags').checked) {
+
+    getTagsOfTickets()
+  }
   
 }
+
+function resetButtonStartService() {
+
+
+
+  let hasNone =  document.getElementById("go").style.display
+
+  if(hasNone == 'none'){
+
+   
+    document.getElementById("go").style.display = 'block'
+  }
+  
+  }

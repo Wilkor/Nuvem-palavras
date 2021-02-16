@@ -12,25 +12,37 @@ integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolfl
 
 <body  onload="start()">
 
+
       <div class="pv2 header"><h1 class="bp-fs-3 bp-c-city">Nuvem de Palavras</h1></div>
       <div class="bp-divider-h"></div>
       
-      <div class="bp-card bp-card--left-arrow">
-      <div id="vis">
-
-        <textarea id="text" style="display:none;">
-        
-        </textarea>
-
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions"  onclick="resetButtonStartService()" id="atendimento" value="option1">
+        <label class="form-check-label" for="inlineRadio1">Atendimento</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" onclick="resetButtonStartService()" id="tags" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Tags</label>
+      </div>
+   
+
+      <div class="bp-card bp-card--left-arrow">
+
+        <div id="vis">
+        </div>
 
       <form id="form">
+
 
         <p style="position: absolute; right: 0; top: 0" id="status"></p>
 
         <div style="text-align: center">
         <div id="presets"></div>
         <div id="custom-area">
+
+          <textarea id="text" style="display:none;">
+               
+          </textarea>
 
             
           </div>
@@ -77,8 +89,9 @@ integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolfl
 </div>
 
 </body>
+
 <script src="https://www.jasondavies.com/d3.min.js"></script>
-<script src="https://www.jasondavies.com/wordcloud/cloud.min.js"></script>
+<script src="./nuvem-de-palavras-text.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="./services.js"></script>
 <script src="./helpers.js"></script>

@@ -83,6 +83,35 @@ function returnListOfTickets(tickets){
   return listOfIds;
 
 }
+function returnStringTagsOfTickets(tickets){
+
+  let stringOfTagsTickets = ``
+ 
+ 
+   tickets.resource.items.map(function(e){
+          
+    stringOfTagsTickets += e.tags+ '|'
+   })
+ 
+
+   return stringOfTagsTickets.replaceAll("undefined",'');
+ 
+ }
+ function returnStringOfTickets(tickets){
+
+  let stringOfTicketsThreads = ``
+ 
+   tickets.resource.items.map(function(e){
+          
+    stringOfTicketsThreads += e.content
+
+   })
+ 
+   return stringOfTicketsThreads;
+ 
+ }
+ 
+ 
 
 function getKeyUrl(){
   

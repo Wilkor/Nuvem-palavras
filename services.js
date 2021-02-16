@@ -31,6 +31,43 @@
 
   }
 
+  function getTagsOfTickets(){
+
+    var keyBot = getKeyUrl()
+  
+    const payload = createPayloadGetTickets();
+  
+         $.ajax({
+             type: "POST",
+             dataType: 'json',
+             url: getBaseUrl(),
+             crossDomain: true,
+             async: false,
+             contentType: "application/json; charset=utf-8",
+             beforeSend: function(xhr) {
+                 xhr.setRequestHeader('Authorization', keyBot);
+             },
+             error: function (jqXHR, textStatus, errorThrown) {
+                 console.log(textStatus);
+      
+             },
+             success: function (result) {
+  
+
+              const listOfTickets = returnStringTagsOfTickets(result)
+
+              document.getElementById("text").innerHTML = listOfTickets
+              document.getElementById('go').style.display ="none"
+  
+             
+                  
+             },
+             data: JSON.stringify(payload)
+         });
+  
+    }
+  
+
 
   function showCloudsWords(arrayTickets, keyBot){
 
@@ -51,16 +88,12 @@
            error: function (jqXHR, textStatus, errorThrown) {
                console.log(textStatus);
            },
-           success: function (msg) {
+           success: function (result) {
 
-            let text =``;
+           
+            text = returnStringOfTickets(result)
 
-            msg.resource.items.forEach(function(e){
-
-               text += e.content;
-            })
-
-            document.getElementById("text").innerHTML =   JSON.stringify(text)
+            document.getElementById("text").innerHTML = text
             document.getElementById('go').style.display ="none"
                
            },
