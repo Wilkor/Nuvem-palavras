@@ -39,7 +39,7 @@ function createPayloadGetTickets(){
     "id": guid4(),
     "to": "postmaster@desk.msging.net",
     "method": "get",
-    "uri": "/tickets/"
+    "uri": "/tickets?$take=100"
     }
 
   return payload;
@@ -53,7 +53,7 @@ function createPayloadGetThreads(randomElement){
     "id": guid4(),
     "to": "postmaster@desk.msging.net",
     "method": "get",
-    "uri": "/tickets/"+randomElement+"/messages"
+    "uri": "/tickets/"+randomElement+"/messages?$take=100"
     }
 
     return payload;
