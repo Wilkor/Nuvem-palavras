@@ -137,3 +137,21 @@ display: flex;
 justify-content: space-between;
 
 }
+
+.bp-btn.bp-btn--bot:hover {
+    background-color: #1b63e0;
+    color: #fff;
+}
+.bp-btn.bp-btn--bot:hover {
+    background-color: #25a9b9;
+}
+.bp-btn.bp-btn--bot:hover {
+    background-color: #25a9b9;
+}
+.bp-btn.bp-btn--small {
+    min-width: 120px;
+}
+.bp-btn.bp-btn--bot {
+    color: #fff;
+    background-color: #3f7de8;
+}
