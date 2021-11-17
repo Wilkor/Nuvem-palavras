@@ -7,12 +7,9 @@ const message = createPostMessage()
 
 window.parent.postMessage(message ,'*')
 
-setInterval(function(){
-    
-      document.getElementById("go").click()
-    
-},60000);
 
+  document.getElementById("go").click()
+    
 }
 
 
